@@ -15,7 +15,7 @@
                     deploymentKey: deploymentKeyParam
                 };
 
-                if (regionParam !== 'prod') {
+                if (regionParam && regionParam.toLowerCase() !== 'prod') {
                     appConfig["region"] = regionParam;
                 };
 

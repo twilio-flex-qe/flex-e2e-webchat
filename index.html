@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://media.twiliocdn.com/sdk/js/webchat-v3/releases/1.0.0/webchat.min.js"></script>
+        <title>Webchat Client</title>
+    </head>
+    <body>
+        <div id="twilio-webchat-widget-root"></div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const deploymentKeyParam = urlParams.get('deploymentKey');
+            const regionParam = urlParams.get('region');
+            window.addEventListener("load", () => {
+                const appConfig = {
+                    deploymentKey: deploymentKeyParam
+                };
+
+                if (regionParam !== 'prod') {
+                    appConfig["region"] = regionParam;
+                };
+
+                Twilio.initWebchat(appConfig);
+            });
+        </script>
+    </body>
+</html>
